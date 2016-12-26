@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="vn_social_network_form_view" model="ir.ui.view">
+            <field name="name">vn.social.network.form</field>
+            <field name="model">vn.social.network.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Share Social Network">
+                    <field name='line_ids'>
+                        <tree string="Products" create="false" edit="false">
+                            <field name="prod_name" string="Product name" readonly="1"/>
+                            <field name="prod_list_price" string="Sale price" readonly="1"/>
+                            <field name="prod_image" string="Image" widget="image" height="128" readonly="1"/>
+                            <field name="prod_description" string="Description" readonly="1"/>
+                        </tree>
+                    </field>
+                    <footer>
+                        <widget type="facebook_share_multi_product"></widget>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="vn_social_network_product_form_view" model="ir.ui.view">
+            <field name="name">vn.social.network.product.form</field>
+            <field name="model">vn.social.network.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Share Social Network">
+                    <group string="Information Product">
+                        <field name="name" string="Product name"/>
+                        <field name="list_price" string="Sale price"/>
+                        <field name="description_sale" string="Description"/>
+                        <field name="image" string="Image" widget="image"/>
+                    </group>
+                    <footer>
+                        <widget type="facebook_share"></widget>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="vn_action_social_network_view" model="ir.actions.act_window">
+            <field name="name">Share social network</field>
+            <field name="res_model">vn.social.network.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="vn_social_network_form_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <record model="ir.values" id="vn_ir_values_social_network_button">
+            <field name="model_id" ref="product.model_product_template"/>
+            <field name="name">Share social network</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('vn_action_social_network_view'))"/>
+            <field name="key">action</field>
+            <field name="model">product.template</field>
+            <field name="action_id" ref="vn_action_social_network_view"/>
+        </record>
+
+        <record model="ir.values" id="vn_ir_values_social_network_product">
+            <field name="model_id" ref="product.model_product_product"/>
+            <field name="name">Share social network</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('vn_action_social_network_view'))"/>
+            <field name="key">action</field>
+            <field name="model">product.product</field>
+            <field name="action_id" ref="vn_action_social_network_view"/>
+        </record>
+    </data>
+</odoo>

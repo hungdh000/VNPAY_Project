@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="vn_terminal_form_view" model="ir.ui.view">
+            <field name="name">vn.terminal.form.view</field>
+            <field name="model">vn.terminal</field>
+            <field name="arch" type="xml">
+                <form string="Terminal">
+                    <group>
+                        <field name="terminal_id" string="ID"/>
+                        <field name="terminal_name" string="Name"/>
+                    </group>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="vn_terminal_tree_view" model="ir.ui.view">
+            <field name="name">vn.terminal.tree.vieww</field>
+            <field name="model">vn.terminal</field>
+            <field name="arch" type="xml">
+                <tree string="Terminal">
+                    <field name="terminal_id"/>
+                    <field name="terminal_name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="vn_terminal_action" model="ir.actions.act_window">
+            <field name="name">Terminal</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vn.terminal</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="vn_terminal_tree_view"/>
+        </record>
+
+        <menuitem parent="base.menu_custom" action="vn_terminal_action"
+                  id="vn_menu_terminal" groups="base.group_no_one" sequence="50"/>
+    </data>
+</odoo>

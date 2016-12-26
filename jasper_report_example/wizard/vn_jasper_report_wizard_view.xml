@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="vn_sale_report_wizard_form" model="ir.ui.view">
+            <field name="name">vn.sale.order.report.wizard.form</field>
+            <field name="model">vn.sale.order.report.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Report">
+                    <group>
+                        <group>
+                            <field name="date_from"/>
+                        </group>
+                        <group>
+                            <field name="date_to"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button icon="fa-book" name="exp_report_sale_order_xls" string="Export to XLS"
+                                type="object" class="oe_stat_button" default_focus="1"/>
+                        <button icon="fa-book" name="exp_report_sale_order_pdf" string="Export to PDF"
+                                type="object" class="oe_stat_button"/>
+                        or
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_menu_jasper_report_sale" model="ir.actions.act_window">
+            <field name="name">Sale Jasper Report</field>
+            <field name="res_model">vn.sale.order.report.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="vn_sale_report_wizard_form"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem parent="sales_team.menu_sale_report" action="action_menu_jasper_report_sale"
+                  id="menu_jasper_report_sale"/>
+    </data>
+</openerp>

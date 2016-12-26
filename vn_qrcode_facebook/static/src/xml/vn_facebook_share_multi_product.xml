@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="facebook_share_multi_product">
+        <html>
+            <head>
+            </head>
+            <body>
+                <div id="fb-root"></div>
+                <div id="fb-root"></div>
+
+                <a id="btn_share_facebook" class="btn btn-sm btn-primary"> Share Facebook</a>
+
+            </body>
+        </html>
+    </t>
+</templates>

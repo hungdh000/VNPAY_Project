@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data noupdate="0">
+		<record id="vn_report_sale_order_xls" model="ir.actions.report.xml">
+			<field name="model">vn.sale.order.report.wizard</field>
+			<field name="name">Report Sale Order</field>
+			<field name="report_name">VNPAY_Report_Sale_Order_XLS</field>
+			<field name="report_rml">jasper_report_example/reports/vn_report_sale_order.jrxml</field>
+			<field name="jasper_report">True</field>
+			<field name="jasper_output">xls</field>
+		</record>
+
+		<record id="vn_report_sale_order_pdf" model="ir.actions.report.xml">
+			<field name="model">vn.sale.order.report.wizard</field>
+			<field name="name">Report Sale Order</field>
+			<field name="report_name">VNPAY_Report_Sale_Order_PDF</field>
+			<field name="report_rml">jasper_report_example/reports/vn_report_sale_order.jrxml</field>
+			<field name="jasper_report">True</field>
+			<field name="jasper_output">pdf</field>
+		</record>
+	</data>
+</openerp>

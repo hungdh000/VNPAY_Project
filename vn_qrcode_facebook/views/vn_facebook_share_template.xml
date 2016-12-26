@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="assets_backend" name="facebook share assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/vn_qrcode_facebook/static/src/js/vn_facebook_share.js"></script>
+                <script type="text/javascript" src="/vn_qrcode_facebook/static/src/js/vn_facebook_share_multi_product.js"></script>
+            </xpath>
+        </template>
+    </data>
+</odoo>

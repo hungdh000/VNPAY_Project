@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="vn_parameter_terminal_id_facebook" model="ir.config_parameter">
+            <field name="key">facebook</field>
+            <field name="value">123456789123456</field>
+        </record>
+
+    </data>
+</odoo>
