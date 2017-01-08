@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <!-- Report Store End Date -->
+        <record id="vn_report_store_end_date_xls" model="ir.actions.report.xml">
+            <field name="model">vn.report.sale.order.end.day</field>
+            <field name="name">Báo cáo bán hàng theo cửa hàng cuối ngày</field>
+            <field name="report_name">VN_Report_Store_End_Date_XLS</field>
+            <field name="report_rml">vn_sale_report/reports/VN_Report_Store.jrxml</field>
+            <field name="jasper_report">True</field>
+            <field name="jasper_output">xls</field>
+        </record>
+
+        <record id="vn_report_store_end_date_pdf" model="ir.actions.report.xml">
+            <field name="model">vn.report.sale.order.end.day</field>
+            <field name="name">Báo cáo bán hàng theo cửa hàng cuối ngày</field>
+            <field name="report_name">VN_Report_Store_End_Date_PDF</field>
+            <field name="report_rml">vn_sale_report/reports/VN_Report_Store.jrxml</field>
+            <field name="jasper_report">True</field>
+            <field name="jasper_output">pdf</field>
+        </record>
+
+        <!-- Report Store From Date To Date -->
+        <record id="vn_report_store_from_date_to_date_xls" model="ir.actions.report.xml">
+            <field name="model">vn.report.sale.order.date</field>
+            <field name="name">Báo cáo bán hàng theo cửa hàng từ ngày đến ngày</field>
+            <field name="report_name">VN_Report_Store_From_Date_To_Date_XLS</field>
+            <field name="report_rml">vn_sale_report/reports/VN_Report_Store.jrxml</field>
+            <field name="jasper_report">True</field>
+            <field name="jasper_output">xls</field>
+        </record>
+
+        <record id="vn_report_store_from_date_to_date_pdf" model="ir.actions.report.xml">
+            <field name="model">vn.report.sale.order.date</field>
+            <field name="name">Báo cáo bán hàng theo cửa hàng từ ngày đến ngày</field>
+            <field name="report_name">VN_Report_Store_From_Date_To_Date_PDF</field>
+            <field name="report_rml">vn_sale_report/reports/VN_Report_Store.jrxml</field>
+            <field name="jasper_report">True</field>
+            <field name="jasper_output">pdf</field>
+        </record>
+
+         <!-- Report Store Quarter -->
+        <record id="vn_report_store_quarter_xls" model="ir.actions.report.xml">
+            <field name="model">vn.report.sale.order.quarter</field>
+            <field name="name">Báo cáo bán hàng theo cửa hàng trong quý</field>
+            <field name="report_name">VN_Report_Store_Quarter_XLS</field>
+            <field name="report_rml">vn_sale_report/reports/VN_Report_Store.jrxml</field>
+            <field name="jasper_report">True</field>
+            <field name="jasper_output">xls</field>
+        </record>
+
+        <record id="vn_report_store_quarter_pdf" model="ir.actions.report.xml">
+            <field name="model">vn.report.sale.order.quarter</field>
+            <field name="name">Báo cáo bán hàng theo cửa hàng trong quý</field>
+            <field name="report_name">VN_Report_Store_Quarter_PDF</field>
+            <field name="report_rml">vn_sale_report/reports/VN_Report_Store.jrxml</field>
+            <field name="jasper_report">True</field>
+            <field name="jasper_output">pdf</field>
+        </record>
+
+         <!-- Report Store In Year -->
+        <record id="vn_report_store_year_xls" model="ir.actions.report.xml">
+            <field name="model">vn.report.sale.order.year</field>
+            <field name="name">Báo cáo bán hàng theo cửa hàng trong năm</field>
+            <field name="report_name">VN_Report_Store_Year_XLS</field>
+            <field name="report_rml">vn_sale_report/reports/VN_Report_Store.jrxml</field>
+            <field name="jasper_report">True</field>
+            <field name="jasper_output">xls</field>
+        </record>
+
+        <record id="vn_report_store_year_pdf" model="ir.actions.report.xml">
+            <field name="model">vn.report.sale.order.year</field>
+            <field name="name">Báo cáo bán hàng theo cửa hàng trong năm</field>
+            <field name="report_name">VN_Report_Store_Year_PDF</field>
+            <field name="report_rml">vn_sale_report/reports/VN_Report_Store.jrxml</field>
+            <field name="jasper_report">True</field>
+            <field name="jasper_output">pdf</field>
+        </record>
+
+        <!-- Report Sale From Date To Date -->
+        <record id="vn_report_sale_from_date_to_date_xls" model="ir.actions.report.xml">
+            <field name="model">vn.report.sale.order.date</field>
+            <field name="name">Báo cáo bán hàng theo ngày</field>
+            <field name="report_name">VN_Report_Sale_From_Date_To_Date_XLS</field>
+            <field name="report_rml">vn_sale_report/reports/VN_Report_Sale_Date.jrxml</field>
+            <field name="jasper_report">True</field>
+            <field name="jasper_output">xls</field>
+        </record>
+
+        <record id="vn_report_sale_from_date_to_date_pdf" model="ir.actions.report.xml">
+            <field name="model">vn.report.sale.order.date</field>
+            <field name="name">Báo cáo bán hàng theo ngày</field>
+            <field name="report_name">VN_Report_Sale_From_Date_To_Date_PDF</field>
+            <field name="report_rml">vn_sale_report/reports/VN_Report_Sale_Date.jrxml</field>
+            <field name="jasper_report">True</field>
+            <field name="jasper_output">pdf</field>
+        </record>
+
+         <!-- Report Sale Quarter -->
+        <record id="vn_report_sale_quarter_xls" model="ir.actions.report.xml">
+            <field name="model">vn.report.sale.order.quarter</field>
+            <field name="name">Báo cáo bán hàng theo ngày</field>
+            <field name="report_name">VN_Report_Sale_Quarter_XLS</field>
+            <field name="report_rml">vn_sale_report/reports/VN_Report_Sale_Date.jrxml</field>
+            <field name="jasper_report">True</field>
+            <field name="jasper_output">xls</field>
+        </record>
+
+        <record id="vn_report_sale_quarter_pdf" model="ir.actions.report.xml">
+            <field name="model">vn.report.sale.order.quarter</field>
+            <field name="name">Báo cáo bán hàng theo ngày</field>
+            <field name="report_name">VN_Report_Sale_Quarter_PDF</field>
+            <field name="report_rml">vn_sale_report/reports/VN_Report_Sale_Date.jrxml</field>
+            <field name="jasper_report">True</field>
+            <field name="jasper_output">pdf</field>
+        </record>
+
+         <!-- Report Sale In Year -->
+        <record id="vn_report_sale_year_xls" model="ir.actions.report.xml">
+            <field name="model">vn.report.sale.order.year</field>
+            <field name="name">Báo cáo bán hàng theo ngày</field>
+            <field name="report_name">VN_Report_Sale_Year_XLS</field>
+            <field name="report_rml">vn_sale_report/reports/VN_Report_Sale_Date.jrxml</field>
+            <field name="jasper_report">True</field>
+            <field name="jasper_output">xls</field>
+        </record>
+
+        <record id="vn_report_sale_year_pdf" model="ir.actions.report.xml">
+            <field name="model">vn.report.sale.order.year</field>
+            <field name="name">Báo cáo bán hàng theo ngày</field>
+            <field name="report_name">VN_Report_Sale_Year_PDF</field>
+            <field name="report_rml">vn_sale_report/reports/VN_Report_Sale_Date.jrxml</field>
+            <field name="jasper_report">True</field>
+            <field name="jasper_output">pdf</field>
+        </record>
+
+    </data>
+</openerp>

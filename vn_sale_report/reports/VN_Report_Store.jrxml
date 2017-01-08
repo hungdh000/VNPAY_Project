@@ -1,0 +1,751 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="VN_Report_Store" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e11e4641-c235-4cd2-b3b9-b793201c7582">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="44"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#1E90FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE0FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#0000FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFBFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Dataset" uuid="8137c85b-bd01-4a19-9132-25d04246694a">
+		<parameter name="PRM_Empl_ID" class="java.lang.Integer"/>
+		<parameter name="PRM_Store_ID" class="java.lang.Integer"/>
+		<parameter name="PRM_Date" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[select *
+from VN_FUNC_Report_Store_End_Date($P{PRM_Empl_ID}, $P{PRM_Date}, $P{PRM_Store_ID})]]>
+		</queryString>
+		<field name="store_name" class="java.lang.String"/>
+		<field name="employee_name" class="java.lang.String"/>
+		<field name="sale_order_number" class="java.lang.Long"/>
+		<field name="total_sale_amount" class="java.math.BigDecimal"/>
+		<field name="return_order_number" class="java.lang.Long"/>
+		<field name="total_return_amount" class="java.math.BigDecimal"/>
+		<field name="total_sale" class="java.math.BigDecimal"/>
+	</subDataset>
+	<parameter name="PRM_Empl_ID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PRM_Store_ID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PRM_Currency" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PRM_Date_From" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PRM_Date_To" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select *
+from VN_FUNC_Report_Store($P{PRM_Empl_ID}, $P{PRM_Date_From}, $P{PRM_Date_To}, $P{PRM_Store_ID})]]>
+	</queryString>
+	<field name="company_name" class="java.lang.String">
+		<fieldDescription><![CDATA[Company Name]]></fieldDescription>
+	</field>
+	<field name="employee_name" class="java.lang.String"/>
+	<field name="sale_order_number" class="java.lang.Long"/>
+	<field name="total_sale_amount" class="java.math.BigDecimal"/>
+	<field name="return_order_number" class="java.lang.Long"/>
+	<field name="total_return_amount" class="java.math.BigDecimal"/>
+	<field name="total_sale" class="java.math.BigDecimal"/>
+	<field name="company_name1" class="java.lang.String"/>
+	<field name="sum_sale_order" class="java.math.BigDecimal"/>
+	<field name="sum_total_sale_amount" class="java.math.BigDecimal"/>
+	<field name="sum_return_order_number" class="java.math.BigDecimal"/>
+	<field name="sum_total_return_amount" class="java.math.BigDecimal"/>
+	<field name="sum_total_sale" class="java.math.BigDecimal"/>
+	<variable name="variable1" class="java.lang.Number" calculation="Sum">
+		<variableExpression><![CDATA[$F{sale_order_number}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="51" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="802" height="51" uuid="999ab06b-7b8e-4a2e-9f4a-5f476c283671"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BÁO CÁO BÁN HÀNG THEO CỬA HÀNG]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="122" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="102" width="77" height="20" uuid="d7edf1d5-c849-46cd-baa1-77ad3bbe7862"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Đơn vị tiền tệ:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="77" y="102" width="94" height="20" uuid="d9dcabc6-ddf5-41aa-baff-2b7a80ad6ed4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{PRM_Currency}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="68" width="77" height="20" uuid="a5f51dff-55aa-44b5-b226-20b01f00502e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Ngày lập:]]></text>
+			</staticText>
+			<textField pattern="dd-MM-yyyy HH:mm:ss">
+				<reportElement x="77" y="68" width="197" height="20" uuid="aadf9fee-9f73-46a6-86a8-e86d3d03652b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="360" y="32" width="232" height="20" uuid="d205e6cc-a1b9-47d7-9495-5fed3e0f84d6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{PRM_Store_ID}.equals(-1) ? "Tất cả" : $F{company_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="285" y="32" width="75" height="20" uuid="ce20457c-b7b3-4ae3-ab8c-4ccb628dfe92"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Cửa hàng:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="285" y="12" width="56" height="20" uuid="82bb387c-599e-492a-9fe2-c1b34b05bbe0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Từ ngày :]]></text>
+			</staticText>
+			<textField pattern="dd-MM-yyyy">
+				<reportElement x="341" y="12" width="112" height="20" uuid="a981297e-8d2d-4a7e-8602-ba15dd285deb"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{PRM_Date_From}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="466" y="12" width="82" height="20" uuid="0c510e0d-2a24-4e0f-850b-e5d32f81cc76"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Đến ngày :]]></text>
+			</staticText>
+			<textField pattern="dd-MM-yyyy">
+				<reportElement x="548" y="12" width="112" height="20" uuid="20c45cc7-0ff0-4670-8942-a276690e45d8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{PRM_Date_To}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<summary>
+		<band height="127" splitType="Stretch">
+			<crosstab>
+				<reportElement x="0" y="0" width="802" height="127" uuid="a7cfdf49-b5d8-4671-972c-3e929e82e396"/>
+				<crosstabHeaderCell>
+					<cellContents>
+						<staticText>
+							<reportElement style="Crosstab Data Text" mode="Opaque" x="0" y="0" width="35" height="33" backcolor="#00CCFF" uuid="8dde5fa1-dc7f-4542-8f32-c7c4479e6274"/>
+							<box>
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="10" isBold="true"/>
+							</textElement>
+							<text><![CDATA[STT]]></text>
+						</staticText>
+						<staticText>
+							<reportElement style="Crosstab Data Text" mode="Opaque" x="35" y="0" width="124" height="33" backcolor="#00CCFF" uuid="82d30148-d29b-4a75-9daa-3d1577e64a69"/>
+							<box>
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="10" isBold="true"/>
+							</textElement>
+							<text><![CDATA[Cửa hàng]]></text>
+						</staticText>
+						<staticText>
+							<reportElement style="Crosstab Data Text" mode="Opaque" x="159" y="0" width="142" height="33" backcolor="#00CCFF" uuid="cbef71ea-26d1-4db5-8b26-e6d87b9e5d45"/>
+							<box>
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="10" isBold="true"/>
+							</textElement>
+							<text><![CDATA[Nhân viên]]></text>
+						</staticText>
+					</cellContents>
+				</crosstabHeaderCell>
+				<rowGroup name="stt" width="35" totalPosition="Start">
+					<bucket class="java.lang.Integer">
+						<bucketExpression><![CDATA[0]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="35" height="25" uuid="5ae7d7b8-5a27-46dc-8f79-e92ef6e454f6"/>
+								<textElement verticalAlignment="Middle">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{ROW_COUNT}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#005FB3" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="301" height="26" uuid="98f47dd7-c36c-4394-87eb-95a728ac4f41"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Tổng cộng]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<rowGroup name="store_name" width="124" totalPosition="Start">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{company_name}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="124" height="25" uuid="e8c7af00-d889-4190-9f2d-f82dbbed99f3"/>
+								<box>
+									<pen lineWidth="0.0"/>
+									<topPen lineWidth="0.0"/>
+									<leftPen lineWidth="0.0"/>
+									<bottomPen lineWidth="0.0"/>
+									<rightPen lineWidth="0.0"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{store_name}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="266" height="24" uuid="2a00c0a4-dd91-4764-aee7-95f90aeced1a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial"/>
+								</textElement>
+								<text><![CDATA[Tổng]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<rowGroup name="empl_name" width="142">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{employee_name}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="142" height="25" uuid="710b5406-3467-4045-b571-a8a886f82346"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{empl_name}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents>
+							<staticText>
+								<reportElement x="10" y="10" width="301" height="26" uuid="70424c12-4ef3-42bf-952f-a0e44ab1abde"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial"/>
+								</textElement>
+								<text><![CDATA[Tổng]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="sale_order" height="33">
+					<bucket class="java.lang.Long">
+						<bucketExpression><![CDATA[]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Transparent">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement style="Crosstab Data Text" mode="Opaque" x="0" y="0" width="54" height="33" backcolor="#00CCFF" uuid="cfe18585-d98b-43d3-8ad9-129edcd8aef9"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font fontName="Arial" isBold="true"/>
+								</textElement>
+								<text><![CDATA[SL đơn hàng bán]]></text>
+							</staticText>
+							<staticText>
+								<reportElement style="Crosstab Data Text" mode="Opaque" x="54" y="0" width="107" height="33" backcolor="#00CCFF" uuid="5e819425-a978-40c2-bad2-6cdc3a12d766"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font fontName="Arial" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Giá trị đơn hàng bán]]></text>
+							</staticText>
+							<staticText>
+								<reportElement style="Crosstab Data Text" mode="Opaque" x="161" y="0" width="54" height="33" backcolor="#00CCFF" uuid="76b84641-c4af-472d-abc1-36f23a790118"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font fontName="Arial" isBold="true"/>
+								</textElement>
+								<text><![CDATA[SL đơn hàng trả	]]></text>
+							</staticText>
+							<staticText>
+								<reportElement style="Crosstab Data Text" mode="Opaque" x="215" y="0" width="107" height="33" backcolor="#00CCFF" uuid="b04563ea-907a-4c6e-98ff-70115121a693"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font fontName="Arial" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Giá trị đơn hàng trả]]></text>
+							</staticText>
+							<staticText>
+								<reportElement style="Crosstab Data Text" mode="Opaque" x="322" y="0" width="107" height="33" backcolor="#00CCFF" uuid="dd43a701-fedd-4ded-8ee9-2d31cfa2f313"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font fontName="Arial" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Doanh thu thuần]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents/>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="sale_order_number" class="java.lang.Long">
+					<measureExpression><![CDATA[$F{sale_order_number}]]></measureExpression>
+				</measure>
+				<measure name="total_sale_order" class="java.math.BigDecimal">
+					<measureExpression><![CDATA[$F{total_sale_amount}]]></measureExpression>
+				</measure>
+				<measure name="return_order_number" class="java.lang.Long">
+					<measureExpression><![CDATA[$F{return_order_number}]]></measureExpression>
+				</measure>
+				<measure name="total_return_order" class="java.math.BigDecimal">
+					<measureExpression><![CDATA[$F{total_return_amount}]]></measureExpression>
+				</measure>
+				<measure name="total_sale" class="java.math.BigDecimal">
+					<measureExpression><![CDATA[$F{total_sale}]]></measureExpression>
+				</measure>
+				<measure name="sum_sale_order_number" class="java.math.BigDecimal">
+					<measureExpression><![CDATA[$F{sum_sale_order}]]></measureExpression>
+				</measure>
+				<measure name="sum_total_sale_order" class="java.math.BigDecimal">
+					<measureExpression><![CDATA[$F{sum_total_sale_amount}]]></measureExpression>
+				</measure>
+				<measure name="sum_return_order_number" class="java.math.BigDecimal">
+					<measureExpression><![CDATA[$F{sum_return_order_number}]]></measureExpression>
+				</measure>
+				<measure name="sum_total_return_order" class="java.math.BigDecimal">
+					<measureExpression><![CDATA[$F{sum_total_return_amount}]]></measureExpression>
+				</measure>
+				<measure name="sum_total_sale" class="java.math.BigDecimal">
+					<measureExpression><![CDATA[$F{sum_total_sale}]]></measureExpression>
+				</measure>
+				<measure name="sale_order_meas" class="java.math.BigDecimal" calculation="Sum">
+					<measureExpression><![CDATA[$F{sale_order_number}]]></measureExpression>
+				</measure>
+				<measure name="total_sale_order_meas" class="java.math.BigDecimal" calculation="Sum">
+					<measureExpression><![CDATA[$F{total_sale_amount}]]></measureExpression>
+				</measure>
+				<measure name="return_order_meas" class="java.math.BigDecimal" calculation="Sum">
+					<measureExpression><![CDATA[$F{return_order_number}]]></measureExpression>
+				</measure>
+				<measure name="total_return_order_meas" class="java.math.BigDecimal" calculation="Sum">
+					<measureExpression><![CDATA[$F{total_return_amount}]]></measureExpression>
+				</measure>
+				<measure name="total_sale_meas" class="java.math.BigDecimal" calculation="Sum">
+					<measureExpression><![CDATA[$F{total_sale}]]></measureExpression>
+				</measure>
+				<crosstabCell width="429" height="25">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="54" height="25" uuid="19f75cfd-e212-4397-a16d-aeef011b072f"/>
+							<box>
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{sale_order_number}]]></textFieldExpression>
+						</textField>
+						<textField pattern="#,##0.00;-#,##0.00">
+							<reportElement style="Crosstab Data Text" x="54" y="0" width="107" height="25" uuid="852d1228-dc99-4240-b155-afd0326feb30"/>
+							<box>
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{total_sale_order}]]></textFieldExpression>
+						</textField>
+						<textField isBlankWhenNull="true">
+							<reportElement style="Crosstab Data Text" x="161" y="0" width="54" height="25" uuid="c7709abf-a3f2-4f56-bf55-5ba9c1a1cdbd"/>
+							<box>
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{return_order_number}]]></textFieldExpression>
+						</textField>
+						<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+							<reportElement style="Crosstab Data Text" x="215" y="0" width="107" height="25" uuid="27da1a4c-001f-4233-885a-538376f5d63f"/>
+							<box>
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{total_return_order}]]></textFieldExpression>
+						</textField>
+						<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+							<reportElement style="Crosstab Data Text" x="322" y="0" width="107" height="25" uuid="7ae6b58f-11fa-4fad-80f0-812d43cc428a"/>
+							<box>
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{total_sale}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="429" height="24" rowTotalGroup="store_name">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" mode="Transparent" x="0" y="0" width="54" height="24" forecolor="#000000" uuid="b067ca70-4d36-4788-9adc-ded5f5f837b9"/>
+							<box>
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{sum_sale_order_number}]]></textFieldExpression>
+						</textField>
+						<textField pattern="#,##0.00;-#,##0.00">
+							<reportElement style="Crosstab Data Text" mode="Transparent" x="54" y="0" width="107" height="24" forecolor="#000000" uuid="f950afb8-335a-43e0-acf7-a9360365421f"/>
+							<box>
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{sum_total_sale_order}]]></textFieldExpression>
+						</textField>
+						<textField isBlankWhenNull="true">
+							<reportElement style="Crosstab Data Text" mode="Transparent" x="161" y="0" width="54" height="24" forecolor="#000000" uuid="8d4ffe77-fec1-4664-81e8-bdbefd467aa2"/>
+							<box>
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{sum_return_order_number}]]></textFieldExpression>
+						</textField>
+						<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+							<reportElement style="Crosstab Data Text" mode="Transparent" x="215" y="0" width="107" height="24" forecolor="#000000" uuid="b00e8a1e-99cd-4347-af1e-6b641f0ae45f"/>
+							<box>
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{sum_total_return_order}]]></textFieldExpression>
+						</textField>
+						<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+							<reportElement style="Crosstab Data Text" mode="Transparent" x="322" y="0" width="107" height="24" forecolor="#000000" uuid="3323b155-ae34-4d3f-8c3d-cd470eae50a0"/>
+							<box>
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{sum_total_sale}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="50" columnTotalGroup="sale_order">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="0239a4a9-8f63-4c1a-bd89-8a418b4c9a0e"/>
+							<textFieldExpression><![CDATA[$V{empl_name}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="store_name" columnTotalGroup="sale_order">
+					<cellContents backcolor="#005FB3" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#FFFFFF" uuid="e701acec-b932-4c64-9f56-6f12414bfc40"/>
+							<textFieldExpression><![CDATA[$V{empl_name}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="429" height="26" rowTotalGroup="stt">
+					<cellContents backcolor="#005FB3" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="1" width="54" height="25" uuid="64f70924-a125-4baf-a8a0-f207a4ad32ab"/>
+							<box leftPadding="0">
+								<leftPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{sale_order_meas}]]></textFieldExpression>
+						</textField>
+						<textField pattern="#,##0.00;-#,##0.00">
+							<reportElement style="Crosstab Data Text" x="54" y="1" width="107" height="25" uuid="3e0b9bd3-300e-4b43-af0f-f74a4f75be27"/>
+							<box leftPadding="0">
+								<leftPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{total_sale_order_meas}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="161" y="1" width="54" height="25" uuid="5fccf61a-cf3a-4212-aada-2b0c9edb90c6"/>
+							<box leftPadding="0">
+								<leftPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{return_order_meas}]]></textFieldExpression>
+						</textField>
+						<textField pattern="#,##0.00;-#,##0.00">
+							<reportElement style="Crosstab Data Text" x="215" y="1" width="107" height="25" uuid="c044a7e6-f306-433e-96ad-e910b944576c"/>
+							<box leftPadding="0">
+								<leftPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{total_return_order_meas}]]></textFieldExpression>
+						</textField>
+						<textField pattern="#,##0.00;-#,##0.00">
+							<reportElement style="Crosstab Data Text" x="322" y="1" width="107" height="25" uuid="b5e5b40f-49ad-4321-8fdb-65ce8b7014c2"/>
+							<box leftPadding="0">
+								<leftPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Arial" size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{total_sale_meas}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="stt" columnTotalGroup="sale_order">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="2f783538-4fe0-41b8-8870-2bb681cedecf"/>
+							<textFieldExpression><![CDATA[$V{empl_name}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="empl_name">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="empl_name" columnTotalGroup="sale_order">
+					<cellContents/>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- View Form -->
+
+        <!-- Report sale order end day form-->
+        <record id="vn_report_sale_order_end_day_wizard_form" model="ir.ui.view">
+            <field name="name">vn.report.sale.order.end.day.wizard.form</field>
+            <field name="model">vn.report.sale.order.end.day</field>
+            <field name="arch" type="xml">
+                <form string="Report Sale End Day">
+                    <group name="Report Filters">
+                        <group>
+                            <field name="start_date"/>
+                            <field name="currency" invisible="1"/>
+                            <field name="type_report" placeholder="Choose report type..."/>
+                            <field name="company_id" placeholder="All" options="{'no_create_edit': True}"/>
+                            <field name="user_id" string="ID / Name Employee" placeholder="All"
+                                   options="{'no_create_edit': True}"/>
+                        </group>
+                        <group name="end_date">
+                            <field name="end_date"/>
+                        </group>
+                    </group>
+                    <group attrs="{'invisible': ['|',('type_report','in',('rep_store','rep_date','rep_product','rep_group_product')),('type_report','=',False)]}">
+                        <field name="type_order" widget="radio" options="{'horizontal': true}"/>
+                        <field name="type_payment" widget="radio" options="{'horizontal': true}"/>
+                        <field name="customer_id" string="ID / Name Customer" placeholder="All"
+                               options="{'no_create_edit': True}" domain="[('customer','=',True)]"/>
+                    </group>
+                    <group attrs="{'invisible': ['|',('type_report','in',('rep_store','rep_date','rep_order')),('type_report','=',False)]}">
+                        <field name="pos_categ_id" string="Category" placeholder="All" widget="many2many_tags"
+                               options="{'no_create_edit': True}"/>
+                        <field name="product_id" placeholder="All" options="{'no_create_edit': True}"/>
+                        <field name="vendor_id" string="ID / Name Vendor" placeholder="All"
+                               domain="[('supplier','=',True)]" options="{'no_create_edit': True}"/>
+                    </group>
+
+                    <footer>
+                        <button name="preview_report_sale_end_day" string="Preview"
+                                type="object" class="btn-primary"/>
+                        <button name="exp_report_sale_xls" string="Export Excel"
+                                type="object" class="btn-primary"/>
+                        <button name="exp_report_sale_pdf" string="Export PDF"
+                                type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Report sale order date form-->
+        <record id="vn_report_sale_order_date_wizard_form" model="ir.ui.view">
+            <field name="name">vn.report.sale.order.date.wizard.form</field>
+            <field name="model">vn.report.sale.order.date</field>
+            <field name="inherit_id" ref="vn_report_sale_order_end_day_wizard_form"/>
+            <field name="arch" type="xml">
+                <form position="attributes">
+                    <attribute name="string">Report Sale From Date To Date</attribute>
+                </form>
+            </field>
+        </record>
+
+        <!-- Report sale order quarter form-->
+        <record id="vn_report_sale_order_quarter_wizard_form" model="ir.ui.view">
+            <field name="name">vn.report.sale.order.quarter.wizard.form</field>
+            <field name="model">vn.report.sale.order.quarter</field>
+            <field name="inherit_id" ref="vn_report_sale_order_end_day_wizard_form"/>
+            <field name="arch" type="xml">
+                <form position="attributes">
+                    <attribute name="string">Report Sale From Date To Date</attribute>
+                </form>
+                <group name="Report Filters" position="after">
+                    <group col="8">
+                        <field name="first_quarter"/>
+                        <field name="second_quarter"/>
+                        <field name="third_quarter"/>
+                        <field name="four_quarter"/>
+                    </group>
+                    <group>
+                        <field name="year" colspan="2"/>
+                    </group>
+                </group>
+            </field>
+        </record>
+
+        <!-- Report sale order year form-->
+        <record id="vn_report_sale_order_year_wizard_form" model="ir.ui.view">
+            <field name="name">vn.report.sale.order.year.wizard.form</field>
+            <field name="model">vn.report.sale.order.year</field>
+            <field name="inherit_id" ref="vn_report_sale_order_end_day_wizard_form"/>
+            <field name="arch" type="xml">
+                <form position="attributes">
+                    <attribute name="string">Report Sale In Year</attribute>
+                </form>
+                <group name="end_date" position="after">
+                    <group>
+                        <field name="year" colspan="2"/>
+                    </group>
+                </group>
+            </field>
+        </record>
+
+        <!-- Action report-->
+
+        <record id="vn_action_menu_sale_end_day" model="ir.actions.act_window">
+            <field name="name">Report Sale End Day</field>
+            <field name="res_model">vn.report.sale.order.end.day</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="vn_report_sale_order_end_day_wizard_form"/>
+            <field name="target">new</field>
+        </record>
+
+        <record id="vn_action_menu_sale_date" model="ir.actions.act_window">
+            <field name="name">Report Sale From Date To Date</field>
+            <field name="res_model">vn.report.sale.order.date</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="vn_report_sale_order_date_wizard_form"/>
+            <field name="target">new</field>
+        </record>
+
+        <record id="vn_action_menu_sale_quarter" model="ir.actions.act_window">
+            <field name="name">Report Sale Quarter</field>
+            <field name="res_model">vn.report.sale.order.quarter</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="vn_report_sale_order_quarter_wizard_form"/>
+            <field name="target">new</field>
+        </record>
+
+        <record id="vn_action_menu_sale_year" model="ir.actions.act_window">
+            <field name="name">Report Sale Year</field>
+            <field name="res_model">vn.report.sale.order.year</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="vn_report_sale_order_year_wizard_form"/>
+            <field name="target">new</field>
+        </record>
+
+        <!-- Menu item report -->
+
+        <menuitem id="vn_menu_point_rep_sale" name="Sale Report" parent="point_of_sale.menu_point_rep" sequence="5"/>
+        <menuitem parent="vn_menu_point_rep_sale" action="vn_action_menu_sale_end_day"
+                  id="vn_menu_report_sale_end_day"/>
+        <menuitem parent="vn_menu_point_rep_sale" action="vn_action_menu_sale_date"
+                  id="vn_menu_report_sale_date"/>
+        <menuitem parent="vn_menu_point_rep_sale" action="vn_action_menu_sale_quarter"
+                  id="vn_menu_report_sale_quarter"/>
+        <menuitem parent="vn_menu_point_rep_sale" action="vn_action_menu_sale_year"
+                  id="vn_menu_report_sale_year"/>
+    </data>
+</openerp>
